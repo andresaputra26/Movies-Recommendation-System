@@ -222,9 +222,9 @@ Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsi
 
 | **Kategori**                                | **Title**                                       | **Genres**                                             |
 | ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | `(Action | Drama | War)`                               |
-|                                             | Pulp Fiction (1994)                             | (Comedy | Crime | Drama | Thriller)                    |
-|                                             | Dances with Wolves (1990)                       | (Adventure | Drama | Western)                          |
+| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | Action, Drama, War                                    |
+|                                             | Pulp Fiction (1994)                             | Comedy | Crime | Drama | Thriller)                    |
+|                                             | Dances with Wolves (1990)                       | Adventure | Drama | Western)                          |
 |                                             | Contact (1997)                                  | (Drama | Sci-Fi)                                       |
 |                                             | Bourne Ultimatum, The (2007)                    | (Action | Crime | Thriller)                            |
 | **Top 10 rekomendasi film**                 | Goodfellas (1990)                               | (Crime | Drama)                                        |
