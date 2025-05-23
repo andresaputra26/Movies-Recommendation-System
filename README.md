@@ -168,8 +168,8 @@ Class `RecommenderNet` membuat model rekomendasi yang menggunakan embedding untu
 
 | Parameter                | Deskripsi                                                                                         | Tipe Data         | Contoh Nilai                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------- | ----------------- | -------------------------------------- |
-| `num_users`              | Jumlah total pengguna unik. Digunakan untuk menentukan ukuran layer embedding pengguna.           | Integer           | 610                                   |
-| `num_resto`              | Jumlah total restoran (atau film) unik. Menentukan ukuran layer embedding restoran.               | Integer           | 9690                                    |
+| `num_users`              | Jumlah total pengguna unik. Digunakan untuk menentukan ukuran layer embedding pengguna.           | Integer           | 610                                    |
+| `num_resto`              | Jumlah total restoran (atau film) unik. Menentukan ukuran layer embedding restoran.               | Integer           | 9690                                   |
 | `embedding_size`         | Dimensi vektor embedding untuk pengguna dan restoran. Menentukan ukuran representasi fitur laten. | Integer           | 50                                     |
 | `user_embedding`         | Layer embedding yang merepresentasikan pengguna sebagai vektor berdimensi `embedding_size`.       | Keras Layer       | `Embedding(num_users, embedding_size)` |
 | `user_bias`              | Layer embedding bias untuk pengguna, menghasilkan satu nilai bias per pengguna.                   | Keras Layer       | `Embedding(num_users, 1)`              |
