@@ -220,24 +220,44 @@ Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsi
 
 ### Output Rekomendasi Film dengan Collaborative Filtering
 
-| **Kategori**                                | **Title**                                       | **Genres**                                             |
-| ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | Action, Drama, War                                    |
-|                                             | Pulp Fiction (1994)                             | Comedy | Crime | Drama | Thriller)                    |
-|                                             | Dances with Wolves (1990)                       | Adventure | Drama | Western)                          |
-|                                             | Contact (1997)                                  | (Drama | Sci-Fi)                                       |
-|                                             | Bourne Ultimatum, The (2007)                    | (Action | Crime | Thriller)                            |
-| **Top 10 rekomendasi film**                 | Goodfellas (1990)                               | (Crime | Drama)                                        |
-|                                             | Ran (1985)                                      | (Drama | War)                                          |
-|                                             | Godfather: Part II, The (1974)                  | (Crime | Drama)                                        |
-|                                             | Grand Day Out with Wallace and Gromit, A (1989) | (Adventure | Animation | Children | Comedy | Sci-Fi)   |
-|                                             | Amadeus (1984)                                  | (Drama)                                                |
-|                                             | Boot, Das (Boat, The) (1981)                    | (Action | Drama | War)                                 |
-|                                             | Harold and Maude (1971)                         | (Comedy | Drama | Romance)                             |
-|                                             | Trust (1990)                                    | (Comedy | Drama | Romance)                             |
-|                                             | Seventh Seal, The (Sjunde inseglet, Det) (1957) | (Drama)                                                |
-|                                             | Glory (1989)                                    | (Drama | War)                                          |
+Showing recommendations for users: 203
 
+Movie with high ratings from user
+
+| **Title**                                       | **Genres**                                             |
+| ----------------------------------------------- | ------------------------------------------------------ |
+| Braveheart (1995)                               | Action, Drama, War                                     |
+| Pulp Fiction (1994)                             | Comedy, Crime, Drama, Thriller                         |
+| Dances with Wolves (1990)                       | Adventure, Drama, Western                              |
+| Contact (1997)                                  | Drama, Sci-Fi                                          |
+| Bourne Ultimatum, The (2007)                    | Action, Crime, Thriller                                |
+
+Top 10 movie recommendation
+
+| **Title**                                       | **Genres**                                             |
+| ----------------------------------------------- | ------------------------------------------------------ |
+| Goodfellas (1990)                               | Crime, Drama                                           |
+| Ran (1985)                                      | Drama, War                                             |
+| Godfather: Part II, The (1974)                  | Crime, Drama                                           |
+| Grand Day Out with Wallace and Gromit, A (1989) | Adventure, Animation, Children, Comedy, Sci-Fi         |
+| Amadeus (1984)                                  | Drama                                                  |
+| Boot, Das (Boat, The) (1981)                    | Action, Drama, War                                     |
+| Harold and Maude (1971)                         | Comedy, Drama, Romance                                 |
+| Trust (1990)                                    | Comedy, Drama, Romance                                 |
+| Seventh Seal, The (Sjunde inseglet, Det) (1957) | Drama                                                  |
+| Glory (1989)                                    | Drama, War                                             |
+
+### ✅ Evaluasi Berdasarkan Permasalahan & Tujuan
+
+* ✔ **Kesulitan dalam menentukan film yang tepat** berhasil diatasi dengan adanya sistem rekomendasi otomatis.
+* ✔ **Personalisasi konten berhasil dicapai**, karena sistem menyesuaikan rekomendasi dengan preferensi dan aktivitas pengguna.
+* ✔ **Proses pemilihan film menjadi lebih efisien**, sehingga pengguna tidak perlu menghabiskan waktu lama untuk memilih tontonan.
+
+### 📈 Dampak terhadap Pemahaman Bisnis
+
+* 💡 Mendorong loyalitas pengguna dengan menyediakan rekomendasi yang sesuai dengan selera masing-masing.
+* 💡 Mempermudah pengguna dalam menemukan film, sehingga meningkatkan kenyamanan dan kepuasan saat menggunakan layanan.
+* 💡 Mendukung strategi platform hiburan dalam menyajikan konten yang lebih relevan dan meningkatkan interaksi pengguna.
 
 ## 📚 Referensi
 - Prasetyo, H., & Nugroho, I. (2022). Analisis Perkembangan Industri Perfilman dan Peran Teknologi Informasi di Indonesia. Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 6(2), 235-242. https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/download/9163/4159
