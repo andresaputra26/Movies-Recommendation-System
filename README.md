@@ -126,6 +126,29 @@ Memberikan rekomendasi film berdasarkan kemiripan konten (genre) menggunakan nil
 ### 7. Pengujian sistem Content Based Filtering
 Tahap ini merupakan proses pengujian sistem Content Based Filtering, di mana pengguna memasukkan judul film `'Clueless 1995'` untuk mencari rekomendasi. Sistem terlebih dahulu memastikan bahwa film tersebut ada di dalam dataset dan memiliki genre `Comedy Romance`. Selanjutnya, fungsi `movie_recommendations` digunakan untuk menghitung kemiripan antara film tersebut dan film lainnya berdasarkan genre menggunakan representasi TF-IDF dan cosine similarity. Hasilnya adalah daftar 10 film dengan genre paling mirip yang direkomendasikan kepada pengguna, menunjukkan bahwa sistem mampu memberikan rekomendasi yang relevan berdasarkan konten film.
 
+- Mencari title `Clueless 1995`
+![alternative text](images/barchart_cat.png)
+**Output mencari title `Clueless 1995`**
+| movieId | title         | genres\_string |
+| ------- | ------------- | -------------- |
+| 1878    | Clueless 1995 | Comedy Romance |
+
+- Hasil rekomendasi
+![alternative text](images/barchart_cat.png)
+| No. | Title                            | Genres String  |
+| --- | -------------------------------- | -------------- |
+| 0   | Run Fatboy Run 2007              | Comedy Romance |
+| 1   | Fever Pitch 2005                 | Comedy Romance |
+| 2   | Even Cowgirls Get the Blues 1993 | Comedy Romance |
+| 3   | Bride Wars 2009                  | Comedy Romance |
+| 4   | Dave 1993                        | Comedy Romance |
+| 5   | Look Who's Talking 1989          | Comedy Romance |
+| 6   | For Love or Money 1993           | Comedy Romance |
+| 7   | MatchMaker, The 1997             | Comedy Romance |
+| 8   | Her Alibi 1989                   | Comedy Romance |
+| 9   | Dirty 30 2016                    | Comedy Romance |
+
+
 ## Collaborative Filtering
 
 ### 1. Memilih Fitur yang digunakan untuk melakukan modeling dengan Collaborative Filtering
@@ -141,12 +164,12 @@ Acak datanya terlebih dahulu agar distribusinya menjadi random. Proses ini bertu
 Membagi dataset menjadi dua bagian: data pelatihan (training set) dan data validasi (validation set) menggunakan metode **train-test split**, dengan proporsi pembagian 80:20. Tujuan dari proses ini adalah agar model dapat belajar dari sebagian data dan kemudian diuji pada data yang belum pernah digunakan sebelumnya, sehingga evaluasi performa model menjadi lebih akurat dan model dapat menghindari overfitting.
 
 ### 5. Modeling Collaborative Filtering
-Kode `RecommenderNet` membuat model rekomendasi yang menggunakan embedding untuk merepresentasikan pengguna dan restoran dalam bentuk vektor berdimensi rendah. Model ini memiliki empat layer embedding: dua untuk fitur utama (`user_embedding` dan `resto_embedding`) dan dua untuk bias (`user_bias` dan `resto_bias`). Dalam proses prediksi, model menghitung dot product antara embedding pengguna dan restoran, lalu menambahkan bias masing-masing, dan mengaplikasikan fungsi sigmoid untuk menghasilkan skor prediksi antara 0 dan 1. Embedding diinisialisasi dengan `he_normal` dan diberi regularisasi L2 untuk mencegah overfitting, berikut adalah parameternya:
+Class `RecommenderNet` membuat model rekomendasi yang menggunakan embedding untuk merepresentasikan pengguna dan restoran dalam bentuk vektor berdimensi rendah. Model ini memiliki empat layer embedding: dua untuk fitur utama (`user_embedding` dan `resto_embedding`) dan dua untuk bias (`user_bias` dan `resto_bias`). Dalam proses prediksi, model menghitung dot product antara embedding pengguna dan restoran, lalu menambahkan bias masing-masing, dan mengaplikasikan fungsi sigmoid untuk menghasilkan skor prediksi antara 0 dan 1. Embedding diinisialisasi dengan `he_normal` dan diberi regularisasi L2 untuk mencegah overfitting, berikut adalah parameternya:
 
 | Parameter                | Deskripsi                                                                                         | Tipe Data         | Contoh Nilai                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------- | ----------------- | -------------------------------------- |
-| `num_users`              | Jumlah total pengguna unik. Digunakan untuk menentukan ukuran layer embedding pengguna.           | Integer           | 1000                                   |
-| `num_resto`              | Jumlah total restoran (atau film) unik. Menentukan ukuran layer embedding restoran.               | Integer           | 500                                    |
+| `num_users`              | Jumlah total pengguna unik. Digunakan untuk menentukan ukuran layer embedding pengguna.           | Integer           | 610                                   |
+| `num_resto`              | Jumlah total restoran (atau film) unik. Menentukan ukuran layer embedding restoran.               | Integer           | 9690                                    |
 | `embedding_size`         | Dimensi vektor embedding untuk pengguna dan restoran. Menentukan ukuran representasi fitur laten. | Integer           | 50                                     |
 | `user_embedding`         | Layer embedding yang merepresentasikan pengguna sebagai vektor berdimensi `embedding_size`.       | Keras Layer       | `Embedding(num_users, embedding_size)` |
 | `user_bias`              | Layer embedding bias untuk pengguna, menghasilkan satu nilai bias per pengguna.                   | Keras Layer       | `Embedding(num_users, 1)`              |
@@ -155,6 +178,65 @@ Kode `RecommenderNet` membuat model rekomendasi yang menggunakan embedding untuk
 | `embeddings_initializer` | Metode inisialisasi bobot embedding, digunakan `'he_normal'` dalam kode.                          | String            | `'he_normal'`                          |
 | `embeddings_regularizer` | Regularisasi L2 pada embedding untuk mencegah overfitting, dengan nilai `1e-6`.                   | Keras Regularizer | `keras.regularizers.l2(1e-6)`          |
 
+Menginisialisasi model RecommenderNet dengan jumlah pengguna sebanyak 610 dan jumlah film sebanyak 9690, serta ukuran embedding 40. Model kemudian dikompilasi menggunakan fungsi loss BinaryCrossentropy, optimizer Adam dengan learning rate 0.001, dan metrik evaluasi Root Mean Squared Error (RMSE) untuk mengukur akurasi prediksi rating yang berada pada rentang 0.5 sampai 5.0.
+
+| Parameter        | Deskripsi                                   | Tipe Data        | Nilai pada Data Anda        |
+| ---------------- | ------------------------------------------- | ---------------- | --------------------------- |
+| `num_users`      | Jumlah total pengguna unik                  | Integer          | 610                         |
+| `num_movies`     | Jumlah total film unik                      | Integer          | 9690                        |
+| `embedding_size` | Dimensi vektor embedding                    | Integer          | 50                          |
+| `loss`           | Fungsi kerugian saat training               | Loss Function    | `BinaryCrossentropy`        |
+| `optimizer`      | Algoritma optimisasi model                  | Optimizer Object | `Adam(learning_rate=0.001)` |
+| `metrics`        | Metode evaluasi performa model              | List             | `[RootMeanSquaredError()]`  |
+| `rating_range`   | Rentang nilai rating pengguna terhadap film | Float Range      | 0.5 – 5.0                   |
+
+### 6. Evaluasi
+Menjalankan proses pelatihan (training) model rekomendasi menggunakan data training X_train dan target y_train. Proses pelatihan dilakukan selama 20 epoch dengan ukuran batch sebanyak 8 data per iterasi. Selain itu, model juga divalidasi pada setiap epoch menggunakan data validasi (X_val, y_val) untuk memantau performa model pada data yang tidak dilatih secara langsung. Hasil pelatihan dan validasi disimpan dalam variabel history yang bisa digunakan untuk analisis lebih lanjut, seperti melihat grafik loss dan akurasi selama training.
+
+Untuk mengevaluasi kinerja sistem rekomendasi, digunakan metrik **Root Mean Squared Error (RMSE)**, yang mengukur tingkat kesalahan prediksi rating film dibandingkan dengan rating asli dari pengguna.
+
+![alternative text](images/barchart_cat.png)
+
+| Metric          | Hasil (Akhir) |
+| --------------- | ------------- |
+| Training Loss   | 0.5868        |
+| Training RMSE   | 0.1772        |
+| Validation Loss | 0.6083        |
+| Validation RMSE | 0.1988        |
+
+Hasil pelatihan menunjukkan model memiliki error rendah dengan training RMSE 0.1772 dan validation RMSE 0.1988. Perbedaan kecil antara training dan validation menandakan model tidak overfitting dan mampu memprediksi rating film dengan cukup baik.
+
+#### Perbandingan Training dan Validation Loss
+
+![alternative text](images/barchart_cat.png)
+
+Grafik *Training and Validation Loss* memperlihatkan bahwa *training loss* terus menurun selama proses pelatihan, yang berarti model semakin baik dalam mempelajari data pelatihan. Sementara itu, *validation loss* juga menurun dan tetap stabil setelah beberapa epoch, menandakan model tidak mengalami overfitting dan mampu bekerja dengan baik pada data baru.
+
+#### Perbandingan Training dan Validation RMSE
+
+![alternative text](images/barchart_cat.png)
+
+Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsisten, sedangkan *validation RMSE* menurun pada awal pelatihan dan kemudian stabil pada nilai yang rendah. Selisih antara RMSE pada data training dan validation cukup kecil, menunjukkan model memiliki performa yang seimbang dan dapat dipercaya untuk prediksi di sistem rekomendasi film.
+
+### Output Rekomendasi Film dengan Collaborative Filtering
+
+| **Kategori**                                | **Title**                                       | **Genres**                                             |
+| ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | Action | Drama | War                                   |
+|                                             | Pulp Fiction (1994)                             | Comedy | Crime | Drama | Thriller                      |
+|                                             | Dances with Wolves (1990)                       | Adventure | Drama | Western                            |
+|                                             | Contact (1997)                                  | Drama | Sci-Fi                                         |
+|                                             | Bourne Ultimatum, The (2007)                    | Action | Crime | Thriller                              |
+| **Top 10 rekomendasi film**                 | Goodfellas (1990)                               | Crime | Drama                                          |
+|                                             | Ran (1985)                                      | Drama | War                                            |
+|                                             | Godfather: Part II, The (1974)                  | Crime | Drama                                          |
+|                                             | Grand Day Out with Wallace and Gromit, A (1989) | Adventure | Animation | Children | Comedy | Sci-Fi     |
+|                                             | Amadeus (1984)                                  | Drama                                                  |
+|                                             | Boot, Das (Boat, The) (1981)                    | Action | Drama | War                                   |
+|                                             | Harold and Maude (1971)                         | Comedy | Drama | Romance                               |
+|                                             | Trust (1990)                                    | Comedy | Drama | Romance                               |
+|                                             | Seventh Seal, The (Sjunde inseglet, Det) (1957) | Drama                                                  |
+|                                             | Glory (1989)                                    | Drama | War                                            |
 
 
 ## 📚 Referensi
