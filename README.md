@@ -23,6 +23,17 @@ Pertumbuhan industri perfilman, baik di tingkat internasional maupun nasional, m
 - Memberikan pengalaman menonton yang lebih baik dan mendukung penyedia layanan dalam menargetkan konten secara lebih tepat sasaran.
 
 ### Solution Statements
+* ✅ **Content-Based Filtering**
+
+  * Merekomendasikan film berdasarkan kesamaan konten seperti genre atau kata kunci film.
+  * Menggunakan teknik seperti TF-IDF dan cosine similarity untuk mengukur kemiripan antar film.
+  * Cocok untuk pengguna baru karena tidak membutuhkan data pengguna lain.
+
+* ✅ **Collaborative Filtering**
+
+  * Memberikan rekomendasi berdasarkan kesamaan perilaku antar pengguna.
+  * Menggunakan data rating untuk mengenali pola kesukaan antar pengguna.
+  * Efektif untuk menghasilkan rekomendasi personal berdasarkan interaksi pengguna dengan film.
 
 ## 📚 Referensi
 - Prasetyo, H., & Nugroho, I. (2022). Analisis Perkembangan Industri Perfilman dan Peran Teknologi Informasi di Indonesia. Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 6(2), 235-242. https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/download/9163/4159
