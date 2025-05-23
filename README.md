@@ -222,7 +222,7 @@ Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsi
 
 | **Kategori**                                | **Title**                                       | **Genres**                                             |
 | ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | (Action | Drama | War)                                 |
+| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | `(Action | Drama | War)`                               |
 |                                             | Pulp Fiction (1994)                             | (Comedy | Crime | Drama | Thriller)                    |
 |                                             | Dances with Wolves (1990)                       | (Adventure | Drama | Western)                          |
 |                                             | Contact (1997)                                  | (Drama | Sci-Fi)                                       |
