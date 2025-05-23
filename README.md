@@ -222,21 +222,21 @@ Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsi
 
 | **Kategori**                                | **Title**                                       | **Genres**                                             |
 | ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | Action | Drama | War                                   |
-|                                             | Pulp Fiction (1994)                             | Comedy | Crime | Drama | Thriller                      |
-|                                             | Dances with Wolves (1990)                       | Adventure | Drama | Western                            |
-|                                             | Contact (1997)                                  | Drama | Sci-Fi                                         |
-|                                             | Bourne Ultimatum, The (2007)                    | Action | Crime | Thriller                              |
-| **Top 10 rekomendasi film**                 | Goodfellas (1990)                               | Crime | Drama                                          |
-|                                             | Ran (1985)                                      | Drama | War                                            |
-|                                             | Godfather: Part II, The (1974)                  | Crime | Drama                                          |
-|                                             | Grand Day Out with Wallace and Gromit, A (1989) | Adventure | Animation | Children | Comedy | Sci-Fi     |
-|                                             | Amadeus (1984)                                  | Drama                                                  |
-|                                             | Boot, Das (Boat, The) (1981)                    | Action | Drama | War                                   |
-|                                             | Harold and Maude (1971)                         | Comedy | Drama | Romance                               |
-|                                             | Trust (1990)                                    | Comedy | Drama | Romance                               |
-|                                             | Seventh Seal, The (Sjunde inseglet, Det) (1957) | Drama                                                  |
-|                                             | Glory (1989)                                    | Drama | War                                            |
+| **Film dengan rating tinggi dari user 203** | Braveheart (1995)                               | (Action | Drama | War)                                 |
+|                                             | Pulp Fiction (1994)                             | (Comedy | Crime | Drama | Thriller)                    |
+|                                             | Dances with Wolves (1990)                       | (Adventure | Drama | Western)                          |
+|                                             | Contact (1997)                                  | (Drama | Sci-Fi)                                       |
+|                                             | Bourne Ultimatum, The (2007)                    | (Action | Crime | Thriller)                            |
+| **Top 10 rekomendasi film**                 | Goodfellas (1990)                               | (Crime | Drama)                                        |
+|                                             | Ran (1985)                                      | (Drama | War)                                          |
+|                                             | Godfather: Part II, The (1974)                  | (Crime | Drama)                                        |
+|                                             | Grand Day Out with Wallace and Gromit, A (1989) | (Adventure | Animation | Children | Comedy | Sci-Fi)   |
+|                                             | Amadeus (1984)                                  | (Drama)                                                |
+|                                             | Boot, Das (Boat, The) (1981)                    | (Action | Drama | War)                                 |
+|                                             | Harold and Maude (1971)                         | (Comedy | Drama | Romance)                             |
+|                                             | Trust (1990)                                    | (Comedy | Drama | Romance)                             |
+|                                             | Seventh Seal, The (Sjunde inseglet, Det) (1957) | (Drama)                                                |
+|                                             | Glory (1989)                                    | (Drama | War)                                          |
 
 
 ## 📚 Referensi
