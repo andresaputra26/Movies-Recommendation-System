@@ -1,7 +1,9 @@
 # Laporan Proyek Machine Learning
 ## Movies Recommendation System
 Nama     : Andre Saputra Ginting
+
 Username : andresaputra26
+
 Email    : andresaputra260604@gmail.com
 
 ## Project Overview
