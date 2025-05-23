@@ -1,4 +1,8 @@
-# Movies Recommendation System
+# Laporan Proyek Machine Learning
+## Movies Recommendation System
+Nama     : Andre Saputra Ginting
+Username : andresaputra26
+Email    : andresaputra260604@gmail.com
 
 ## Project Overview
 Pertumbuhan industri perfilman, baik di tingkat internasional maupun nasional, menunjukkan perkembangan yang sangat menjanjikan. Hal ini tercermin dari peningkatan jumlah penonton bioskop yang terus bertambah setiap tahunnya. Pada tahun 2018, jumlah penonton bioskop di Indonesia telah melampaui 50 juta orang, dengan hampir 200 judul film dari produksi dalam dan luar negeri yang telah diputar di seluruh wilayah Indonesia (Prasetyo & Nugroho, 2022). Dalam industri perfilman, pengelompokan penonton dilakukan melalui kategori tertentu seperti klasifikasi usia dan pemilihan genre pada setiap film yang diproduksi. Oleh karena itu, diperlukan sistem rekomendasi yang mampu membantu penonton dalam menentukan genre film yang sesuai dengan preferensi serta batasan usia mereka (Nababan & Trisna, 2021).
