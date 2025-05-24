@@ -127,14 +127,18 @@ Memberikan rekomendasi film berdasarkan kemiripan konten (genre) menggunakan nil
 Tahap ini merupakan proses pengujian sistem Content Based Filtering, di mana pengguna memasukkan judul film `'Clueless 1995'` untuk mencari rekomendasi. Sistem terlebih dahulu memastikan bahwa film tersebut ada di dalam dataset dan memiliki genre `Comedy Romance`. Selanjutnya, fungsi `movie_recommendations` digunakan untuk menghitung kemiripan antara film tersebut dan film lainnya berdasarkan genre menggunakan representasi TF-IDF dan cosine similarity. Hasilnya adalah daftar 10 film dengan genre paling mirip yang direkomendasikan kepada pengguna, menunjukkan bahwa sistem mampu memberikan rekomendasi yang relevan berdasarkan konten film.
 
 - Mencari title `Clueless 1995`
+
 ![alternative text](images/title_predictinput.png)
+
 **Output mencari title `Clueless 1995`**
 | movieId | title         | genres\_string |
 | ------- | ------------- | -------------- |
 | 1878    | Clueless 1995 | Comedy Romance |
 
 - Hasil rekomendasi
+
 ![alternative text](images/output_cbf.png)
+
 | No. | Title                            | Genres String  |
 | --- | -------------------------------- | -------------- |
 | 0   | Run Fatboy Run 2007              | Comedy Romance |
