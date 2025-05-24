@@ -76,32 +76,32 @@ File `movies.csv` dan `ratings.csv` saling terhubung melalui kolom `movieId`, ya
 ### 1. Merge Data `movies` dan `ratings`
 Menggabungkan dua dataset utama (`movies.csv` dan `ratings.csv`) ke dalam satu DataFrame gabungan dilakukan dengan menggunakan relasi berdasarkan kolom `movieId`, yang merupakan kunci primer pada `movies.csv` dan kunci asing pada `ratings.csv`. Proses ini bertujuan untuk menyatukan informasi deskriptif mengenai film (seperti judul dan genre) dengan data interaksi pengguna (seperti `userId` dan `rating`). Dengan penggabungan ini, setiap baris dalam DataFrame akhir akan merepresentasikan satu instance rating yang mencakup siapa pengguna yang memberi rating, berapa nilai rating-nya, serta metadata film yang dinilai. Hal ini sangat penting dalam membangun sistem rekomendasi karena memungkinkan proses analisis preferensi pengguna dan pemodelan machine learning dilakukan secara lebih efisien dan komprehensif dalam satu struktur data yang utuh.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/merge_data.png)
 
 ### 2. Menghapus kolom `timestamp`
 Menghapus kolom `timestamp` karena tidak digunakan dalam membuat sistem rekomendasi.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/delete_column.png)
 
 ### 3. Mengatasi Missing Values
 Menghapus baris data yang memiliki nilai kosong (missing values) pada kolom penting seperti `userId` dan `rating`, yang masing-masing memiliki 18 nilai kosong. Nilai yang hilang pada kolom ini dapat memengaruhi kualitas sistem rekomendasi karena berisi informasi utama tentang pengguna dan preferensinya. Dengan menghapus total 18 baris yang mengandung missing values, data menjadi lebih bersih dan valid untuk dianalisis atau digunakan dalam pelatihan model rekomendasi.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/missing_values.png)
 
 ### 4. Mengatasi data duplikat
 Terlihat tidak ada data duplikat.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/delete_duplicated.png)
 
 ### 5. Menghapus Simbol pada kolom `title` dan `genres`
 Menghapus simbol tanda kurung pada tahun yang terdapat di kolom `title` dengan mengganti pola teks seperti `(2023)` menjadi hanya `2023`, serta mengubah isi kolom `genres` yang awalnya berupa string dengan genre yang dipisahkan oleh tanda `|` menjadi list atau array genre terpisah, sehingga memudahkan pengolahan data genre secara individual.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/delete_symbol.png)
 
 ### 6. Menghapus data pada kolom `title` yang tidak memiliki genre
 Menghapus baris-baris pada DataFrame `df_merge` yang kolom `genres`-nya mengandung nilai `'(no genres listed)'`. Dengan menggunakan fungsi `apply` dan `lambda`, setiap baris dicek apakah genre tersebut tidak mengandung string tersebut, sehingga hanya data dengan genre yang valid yang disimpan. Setelah proses penghapusan, kode mencetak jumlah baris yang tersisa dan menampilkan beberapa baris pertama dari DataFrame hasil pembersihan tersebut.
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/delete_nogenre.png)
 
 ## Content Based Filtering
 
@@ -127,14 +127,14 @@ Memberikan rekomendasi film berdasarkan kemiripan konten (genre) menggunakan nil
 Tahap ini merupakan proses pengujian sistem Content Based Filtering, di mana pengguna memasukkan judul film `'Clueless 1995'` untuk mencari rekomendasi. Sistem terlebih dahulu memastikan bahwa film tersebut ada di dalam dataset dan memiliki genre `Comedy Romance`. Selanjutnya, fungsi `movie_recommendations` digunakan untuk menghitung kemiripan antara film tersebut dan film lainnya berdasarkan genre menggunakan representasi TF-IDF dan cosine similarity. Hasilnya adalah daftar 10 film dengan genre paling mirip yang direkomendasikan kepada pengguna, menunjukkan bahwa sistem mampu memberikan rekomendasi yang relevan berdasarkan konten film.
 
 - Mencari title `Clueless 1995`
-![alternative text](images/barchart_cat.png)
+![alternative text](images/title_predictinput.png)
 **Output mencari title `Clueless 1995`**
 | movieId | title         | genres\_string |
 | ------- | ------------- | -------------- |
 | 1878    | Clueless 1995 | Comedy Romance |
 
 - Hasil rekomendasi
-![alternative text](images/barchart_cat.png)
+![alternative text](images/output_cbf.png)
 | No. | Title                            | Genres String  |
 | --- | -------------------------------- | -------------- |
 | 0   | Run Fatboy Run 2007              | Comedy Romance |
