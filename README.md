@@ -289,6 +289,7 @@ Untuk mengevaluasi kinerja sistem rekomendasi, digunakan metrik **Root Mean Squa
 RMSE adalah metrik evaluasi yang digunakan untuk mengukur seberapa besar perbedaan (galat) antara nilai yang diprediksi oleh model dengan nilai aktual (yang sebenarnya). RMSE sering digunakan dalam regresi dan sistem rekomendasi untuk menilai akurasi prediksi.
 
 Rumus: 
+
 ![alternative text](images/RMSE.png)
 
 Hasil Akhir: 
