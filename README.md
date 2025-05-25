@@ -72,11 +72,42 @@ File `ratings.csv` menyimpan **data penilaian (rating)** yang diberikan oleh **p
 
 File `movies.csv` dan `ratings.csv` saling terhubung melalui kolom `movieId`, yang memungkinkan sistem rekomendasi untuk menggabungkan data metadata film dengan interaksi pengguna. Melalui hubungan ini, sistem dapat menganalisis preferensi pengguna berdasarkan rating yang diberikan terhadap film tertentu dan menggunakan informasi genre dari `movies.csv` untuk memberikan rekomendasi yang relevan dan personal. Keterkaitan ini menjadi dasar dalam penerapan metode seperti content-based filtering maupun collaborative filtering dalam sistem rekomendasi film.
 
+### Visualisasi jumlah rating
+
+![alternative text](images/merge_data.png)
+
+### 📊 **Hasil Visualisasi**
+
+* **Rating 4.0** menjadi rating yang paling banyak diberikan oleh pengguna, dengan jumlah mencapai **26.818 kali**. Hal ini menunjukkan bahwa sebagian besar pengguna memberikan penilaian positif terhadap film yang mereka tonton.
+
+* Rating **3.0** juga sangat sering diberikan, sebanyak **20.047 kali**, diikuti oleh rating **5.0** (**13.211 kali**) dan **3.5** (**13.136 kali**). Pola ini menunjukkan bahwa mayoritas pengguna cenderung memberikan rating di rentang **tengah ke atas**, yaitu antara **3.0 hingga 5.0**.
+
+* Rating paling rendah, yaitu **0.5**, sangat jarang diberikan, hanya sebanyak **1.370 kali**, diikuti oleh rating **1.5 (1.791 kali)** dan **1.0 (2.811 kali)**. Ini menunjukkan bahwa hanya sedikit pengguna yang benar-benar tidak menyukai film yang mereka tonton.
+
+* **Distribusi ini bersifat skewed ke kanan**, artinya lebih banyak pengguna yang memberikan penilaian positif dibanding negatif. Hal ini bisa mencerminkan dua hal:
+
+  1. Film yang ditonton umumnya berkualitas baik atau sesuai dengan preferensi pengguna.
+  2. Pengguna cenderung memberikan penilaian lebih tinggi karena faktor subjektif seperti aktor favorit, alur cerita yang menarik, atau faktor nostalgia.
+
 ## Data Preparation
 ### 1. Merge Data `movies` dan `ratings`
 Menggabungkan dua dataset utama (`movies.csv` dan `ratings.csv`) ke dalam satu DataFrame gabungan dilakukan dengan menggunakan relasi berdasarkan kolom `movieId`, yang merupakan kunci primer pada `movies.csv` dan kunci asing pada `ratings.csv`. Proses ini bertujuan untuk menyatukan informasi deskriptif mengenai film (seperti judul dan genre) dengan data interaksi pengguna (seperti `userId` dan `rating`). Dengan penggabungan ini, setiap baris dalam DataFrame akhir akan merepresentasikan satu instance rating yang mencakup siapa pengguna yang memberi rating, berapa nilai rating-nya, serta metadata film yang dinilai. Hal ini sangat penting dalam membangun sistem rekomendasi karena memungkinkan proses analisis preferensi pengguna dan pemodelan machine learning dilakukan secara lebih efisien dan komprehensif dalam satu struktur data yang utuh.
 
 ![alternative text](images/merge_data.png)
+
+### Visualisasi Jumlah Title Film (Top 20)
+
+![alternative text](images/merge_data.png)
+
+### 📊 **Hasil Visualisasi**
+
+* Film **Forrest Gump (1994)** menjadi film dengan **jumlah kemunculan terbanyak** dalam dataset, yaitu sebanyak **329 kali**, diikuti oleh **The Shawshank Redemption (1994)** (**317 kali**) dan **Pulp Fiction (1994)** (**307 kali**). Hal ini menunjukkan bahwa film-film ini sangat populer dan sering dinilai oleh pengguna.
+
+* Sebagian besar film yang masuk dalam 20 besar berasal dari **dekade 1990-an**, menunjukkan bahwa era ini mendominasi dalam hal jumlah film yang menarik perhatian pengguna. Beberapa film dari tahun 1980-an dan 2000-an juga muncul, seperti *Star Wars: Episode V (1980)* dan *The Lord of the Rings: The Fellowship of the Ring (2001)*.
+
+* Genre yang dominan dalam daftar ini mencakup **Drama, Crime, Adventure, dan Sci-Fi**, menandakan bahwa pengguna cenderung lebih banyak menonton dan memberi penilaian pada film-film dengan narasi yang kuat dan mendalam.
+
+* Menariknya, film **animasi dan keluarga** seperti *Toy Story (1995)* juga masuk ke dalam daftar ini, menunjukkan bahwa genre keluarga tetap memiliki tempat di hati pengguna meskipun lebih sedikit dibanding genre drama atau thriller.
 
 ### 2. Menghapus kolom `timestamp`
 Menghapus kolom `timestamp` karena tidak digunakan dalam membuat sistem rekomendasi.
@@ -98,12 +129,53 @@ Menghapus simbol tanda kurung pada tahun yang terdapat di kolom `title` dengan m
 
 ![alternative text](images/delete_symbol.png)
 
+### Visualisasi Judul Film Berdasarkan Genre
+
+![alternative text](images/delete_symbol.png)
+
+### 📊 **Hasil Visualisasi**
+- Genre Drama merupakan genre yang paling banyak muncul, dengan 41.928 judul film atau sekitar 15,3% dari total keseluruhan.
+- Diikuti oleh Comedy (14,2%), Action (11,2%), dan Thriller (9,6%), yang juga memiliki jumlah film yang cukup tinggi.
+- Genre seperti Western, Documentary, dan Film-Noir memiliki jumlah film yang jauh lebih sedikit, masing-masing hanya 0,7%, 0,4%, dan 0,3% dari total.
+- Selain itu, terdapat pula kategori (no genres listed) yang mencakup 47 judul film atau sekitar 0,0%, menunjukkan bahwa sejumlah kecil film tidak memiliki genre yang terklasifikasi.
+
+Untuk kategori no genres listed akan dihapus.
+
+### Visualisasi Rata-rata Rating per Genre
+
+![alternative text](images/delete_symbol.png)
+
+### 📊 **Hasil Visualisasi**
+
+- Genre **Film-Noir** memiliki **rata-rata rating tertinggi** dibandingkan genre lainnya, yaitu sebesar **3,92**, diikuti oleh genre **War (3,81)** dan **Documentary (3,80)**. Ketiga genre ini menunjukkan kualitas atau apresiasi yang tinggi dari pengguna meskipun jumlah filmnya relatif lebih sedikit dibanding genre populer lainnya.
+
+- Genre seperti **Drama** dan **Crime** juga menunjukkan rating cukup tinggi (**3,66**), menandakan konsistensi kualitas meskipun jumlah judulnya banyak.
+
+- Sebaliknya, genre **Horror** menempati posisi terendah dengan rata-rata rating sebesar **3,26**, diikuti oleh **Comedy (3,38)** dan **Children (3,41)**. Hal ini mungkin mencerminkan selera pengguna yang lebih kritis terhadap genre-genre tersebut atau kualitas yang lebih bervariasi.
+
+- Menariknya, kategori **(no genres listed)** memiliki rata-rata rating **3,49**, menunjukkan bahwa meskipun tidak diklasifikasikan ke dalam genre tertentu, film-film tersebut tetap mendapatkan apresiasi cukup baik dari pengguna.
+
 ### 6. Menghapus data pada kolom `title` yang tidak memiliki genre
 Menghapus baris-baris pada DataFrame `df_merge` yang kolom `genres`-nya mengandung nilai `'(no genres listed)'`. Dengan menggunakan fungsi `apply` dan `lambda`, setiap baris dicek apakah genre tersebut tidak mengandung string tersebut, sehingga hanya data dengan genre yang valid yang disimpan. Setelah proses penghapusan, kode mencetak jumlah baris yang tersisa dan menampilkan beberapa baris pertama dari DataFrame hasil pembersihan tersebut.
 
 ![alternative text](images/delete_nogenre.png)
 
 ## Content Based Filtering
+
+**Kelebihan:**
+
+* **Personalized:** Rekomendasi didasarkan pada preferensi dan riwayat pengguna sendiri, sehingga hasilnya sangat personal.
+* **Tidak memerlukan data pengguna lain:** Cukup data profil item dan data interaksi pengguna sendiri.
+* **Mudah memahami alasan rekomendasi:** Karena didasarkan pada fitur konten, alasan rekomendasi lebih transparan.
+* **Dapat merekomendasikan item baru (cold start item):** Selama fitur konten tersedia, item baru bisa direkomendasikan walaupun belum ada interaksi pengguna.
+
+**Kekurangan:**
+
+* **Over-specialization:** Rekomendasi cenderung monoton, hanya menyarankan item yang sangat mirip dengan yang sudah pernah digunakan, sehingga kurang beragam.
+* **Butuh fitur konten yang lengkap dan informatif:** Jika fitur item kurang baik, kualitas rekomendasi juga menurun.
+* **Cold start pengguna baru:** Untuk pengguna baru yang belum punya riwayat, sulit memberikan rekomendasi yang relevan.
+
+---
 
 ### 1. Memilih Fitur yang digunakan untuk melakukan modeling dengan Content Based Filtering
 Menggunakan fitur `movieId`, `title`, dan `genres` sebagai input utama untuk metode Content Based Filtering. Fitur `title` dan `genres` digunakan untuk merepresentasikan konten film, sehingga sistem dapat memberikan rekomendasi berdasarkan kesamaan isi atau kategori film, sedangkan `movieId` berfungsi sebagai identitas unik setiap film dalam proses pemodelan dan evaluasi.
@@ -155,6 +227,21 @@ Tahap ini merupakan proses pengujian sistem Content Based Filtering, di mana pen
 
 ## Collaborative Filtering
 
+**Kelebihan:**
+
+* **Mampu menemukan pola dan rekomendasi yang lebih bervariasi:** Tidak hanya berdasarkan fitur, tapi juga pola perilaku pengguna lain, sehingga bisa merekomendasikan item yang mungkin tidak mirip secara konten tapi relevan.
+* **Tidak bergantung pada fitur konten item:** Bisa digunakan bahkan kalau data konten item terbatas atau tidak tersedia.
+* **Meningkatkan keragaman rekomendasi:** Karena didasarkan pada preferensi pengguna lain, lebih mudah keluar dari "zona nyaman" konten yang sudah dikenal.
+
+**Kekurangan:**
+
+* **Cold start problem:** Sulit memberikan rekomendasi pada pengguna baru yang belum punya interaksi atau item baru yang belum ada interaksi.
+* **Data sparcity:** Jika interaksi pengguna-item sangat sedikit, kualitas rekomendasi menurun.
+* **Scalability:** Butuh komputasi besar saat jumlah pengguna dan item sangat banyak.
+* **Risiko popularitas bias:** Rekomendasi cenderung mengutamakan item populer sehingga item niche kurang terekomendasi.
+
+---
+
 ### 1. Memilih Fitur yang digunakan untuk melakukan modeling dengan Collaborative Filtering
 Menggunakan fitur `userId`, `movieId`, dan `rating` sebagai input utama untuk metode Collaborative Filtering. Fitur `userId` merepresentasikan identitas unik setiap pengguna, `movieId` sebagai identitas unik setiap film, dan `rating` mencerminkan preferensi pengguna terhadap film tertentu. Ketiga fitur ini digunakan untuk mempelajari pola interaksi antara pengguna dan item, sehingga sistem dapat merekomendasikan film berdasarkan kesamaan perilaku pengguna atau kesamaan preferensi antar item.
 
@@ -199,16 +286,21 @@ Menjalankan proses pelatihan (training) model rekomendasi menggunakan data train
 
 Untuk mengevaluasi kinerja sistem rekomendasi, digunakan metrik **Root Mean Squared Error (RMSE)**, yang mengukur tingkat kesalahan prediksi rating film dibandingkan dengan rating asli dari pengguna.
 
+RMSE adalah metrik evaluasi yang digunakan untuk mengukur seberapa besar perbedaan (galat) antara nilai yang diprediksi oleh model dengan nilai aktual (yang sebenarnya). RMSE sering digunakan dalam regresi dan sistem rekomendasi untuk menilai akurasi prediksi.
+
+Rumus: 
 ![alternative text](images/barchart_cat.png)
+
+Hasil Akhir: 
 
 | Metric          | Hasil (Akhir) |
 | --------------- | ------------- |
-| Training Loss   | 0.5868        |
-| Training RMSE   | 0.1772        |
-| Validation Loss | 0.6083        |
-| Validation RMSE | 0.1988        |
+| Training Loss   | 0.5890        |
+| Training RMSE   | 0.1786        |
+| Validation Loss | 0.6080        |
+| Validation RMSE | 0.1979        |
 
-Hasil pelatihan menunjukkan model memiliki error rendah dengan training RMSE 0.1772 dan validation RMSE 0.1988. Perbedaan kecil antara training dan validation menandakan model tidak overfitting dan mampu memprediksi rating film dengan cukup baik.
+Hasil pelatihan menunjukkan model memiliki error rendah dengan training RMSE 0.1786 dan validation RMSE 0.1979. Perbedaan kecil antara training dan validation menandakan model tidak overfitting dan mampu memprediksi rating film dengan cukup baik.
 
 #### Perbandingan Training dan Validation Loss
 
@@ -224,32 +316,32 @@ Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsi
 
 ### Output Rekomendasi Film dengan Collaborative Filtering
 
-Showing recommendations for users: 203
+### 🎥 **Showing Recommendations for User: 418**
 
-Movie with high ratings from user
+#### ✅ Movie with High Ratings from User
 
-| **Title**                                       | **Genres**                                             |
-| ----------------------------------------------- | ------------------------------------------------------ |
-| Braveheart (1995)                               | Action, Drama, War                                     |
-| Pulp Fiction (1994)                             | Comedy, Crime, Drama, Thriller                         |
-| Dances with Wolves (1990)                       | Adventure, Drama, Western                              |
-| Contact (1997)                                  | Drama, Sci-Fi                                          |
-| Bourne Ultimatum, The (2007)                    | Action, Crime, Thriller                                |
+| **Title**                              | **Genres**                 |
+| -------------------------------------- | -------------------------- |
+| Shawshank Redemption, The (1994)       | Crime, Drama               |
+| Trainspotting (1996)                   | Comedy, Crime, Drama       |
+| Monty Python's Life of Brian (1979)    | Comedy                     |
+| Monty Python and the Holy Grail (1975) | Adventure, Comedy, Fantasy |
+| To Kill a Mockingbird (1962)           | Drama                      |
 
-Top 10 movie recommendation
+#### ⭐ Top 10 Movie Recommendation
 
-| **Title**                                       | **Genres**                                             |
-| ----------------------------------------------- | ------------------------------------------------------ |
-| Goodfellas (1990)                               | Crime, Drama                                           |
-| Ran (1985)                                      | Drama, War                                             |
-| Godfather: Part II, The (1974)                  | Crime, Drama                                           |
-| Grand Day Out with Wallace and Gromit, A (1989) | Adventure, Animation, Children, Comedy, Sci-Fi         |
-| Amadeus (1984)                                  | Drama                                                  |
-| Boot, Das (Boat, The) (1981)                    | Action, Drama, War                                     |
-| Harold and Maude (1971)                         | Comedy, Drama, Romance                                 |
-| Trust (1990)                                    | Comedy, Drama, Romance                                 |
-| Seventh Seal, The (Sjunde inseglet, Det) (1957) | Drama                                                  |
-| Glory (1989)                                    | Drama, War                                             |
+| **Title**                                              | **Genres**                   |
+| ------------------------------------------------------ | ---------------------------- |
+| Wallace & Gromit: The Best of Aardman Animation (1996) | Adventure, Animation, Comedy |
+| Philadelphia Story, The (1940)                         | Comedy, Drama, Romance       |
+| Rear Window (1954)                                     | Mystery, Thriller            |
+| It Happened One Night (1934)                           | Comedy, Romance              |
+| Casablanca (1942)                                      | Drama, Romance               |
+| Lifeboat (1944)                                        | Drama, War                   |
+| Hours, The (2002)                                      | Drama, Romance               |
+| Dune (2000)                                            | Drama, Fantasy, Sci-Fi       |
+| Louis C.K.: Shameless (2007)                           | Comedy                       |
+| Three Billboards Outside Ebbing, Missouri (2017)       | Crime, Drama                 |
 
 ### ✅ Evaluasi Berdasarkan Permasalahan & Tujuan
 
