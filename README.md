@@ -74,7 +74,7 @@ File `movies.csv` dan `ratings.csv` saling terhubung melalui kolom `movieId`, ya
 
 ### Visualisasi jumlah rating
 
-![alternative text](images/merge_data.png)
+![alternative text](images/jumlah_ratings.png)
 
 ### 📊 **Hasil Visualisasi**
 
@@ -97,7 +97,7 @@ Menggabungkan dua dataset utama (`movies.csv` dan `ratings.csv`) ke dalam satu D
 
 ### Visualisasi Jumlah Title Film (Top 20)
 
-![alternative text](images/merge_data.png)
+![alternative text](images/Jumlah_title_film.png)
 
 ### 📊 **Hasil Visualisasi**
 
@@ -131,7 +131,7 @@ Menghapus simbol tanda kurung pada tahun yang terdapat di kolom `title` dengan m
 
 ### Visualisasi Judul Film Berdasarkan Genre
 
-![alternative text](images/delete_symbol.png)
+![alternative text](images/film_by_genre.png)
 
 ### 📊 **Hasil Visualisasi**
 - Genre Drama merupakan genre yang paling banyak muncul, dengan 41.928 judul film atau sekitar 15,3% dari total keseluruhan.
@@ -143,7 +143,7 @@ Untuk kategori no genres listed akan dihapus.
 
 ### Visualisasi Rata-rata Rating per Genre
 
-![alternative text](images/delete_symbol.png)
+![alternative text](images/rata-rata_rating_pergenre.png)
 
 ### 📊 **Hasil Visualisasi**
 
@@ -289,7 +289,7 @@ Untuk mengevaluasi kinerja sistem rekomendasi, digunakan metrik **Root Mean Squa
 RMSE adalah metrik evaluasi yang digunakan untuk mengukur seberapa besar perbedaan (galat) antara nilai yang diprediksi oleh model dengan nilai aktual (yang sebenarnya). RMSE sering digunakan dalam regresi dan sistem rekomendasi untuk menilai akurasi prediksi.
 
 Rumus: 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/RMSE.png)
 
 Hasil Akhir: 
 
@@ -304,17 +304,19 @@ Hasil pelatihan menunjukkan model memiliki error rendah dengan training RMSE 0.1
 
 #### Perbandingan Training dan Validation Loss
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/evaluasi_model_loss.png)
 
 Grafik *Training and Validation Loss* memperlihatkan bahwa *training loss* terus menurun selama proses pelatihan, yang berarti model semakin baik dalam mempelajari data pelatihan. Sementara itu, *validation loss* juga menurun dan tetap stabil setelah beberapa epoch, menandakan model tidak mengalami overfitting dan mampu bekerja dengan baik pada data baru.
 
 #### Perbandingan Training dan Validation RMSE
 
-![alternative text](images/barchart_cat.png)
+![alternative text](images/evaluasi_model_rmse.png)
 
 Pada grafik *Training and Validation RMSE*, *training RMSE* menurun secara konsisten, sedangkan *validation RMSE* menurun pada awal pelatihan dan kemudian stabil pada nilai yang rendah. Selisih antara RMSE pada data training dan validation cukup kecil, menunjukkan model memiliki performa yang seimbang dan dapat dipercaya untuk prediksi di sistem rekomendasi film.
 
 ### Output Rekomendasi Film dengan Collaborative Filtering
+
+![alternative text](images/output_cf.png)
 
 ### 🎥 **Showing Recommendations for User: 418**
 
